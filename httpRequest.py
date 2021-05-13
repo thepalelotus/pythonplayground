@@ -20,7 +20,7 @@ def http_request():
             try:
                 s.connect((target_domain, 80))
                 try:
-                    s.sendall(b"%s / HTTP/1.1\r\nHost: " % encoded_choose_verb + encoded_target_domain +
+                    s.sendall(b"%s / HTTP/1.1\r\nHost: " % encoded_target_domain + encoded_choose_verb +
                               b"\r\n\r\n")
                     try:
                         print("[+] Response received...\n")
