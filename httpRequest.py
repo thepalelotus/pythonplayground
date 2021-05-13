@@ -43,7 +43,7 @@ def http_request():
             try:
                 s_sock.connect((target_domain, 443))
                 try:
-                    s_sock.sendall(b"%s / HTTP/1.1\r\nHost: " % encoded_choose_verb + encoded_target_domain +
+                    s_sock.sendall(b"%s / HTTP/1.1\r\nHost: " % encoded_target_domain + encoded_choose_verb +
                                    b"\r\n\r\n")
                     try:
                         print("[+] Response received...\n")
