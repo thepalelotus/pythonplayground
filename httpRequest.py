@@ -12,7 +12,7 @@ def http_request():
     port = sys.argv[3]
     port_integer = int(port)
     encoded_target_domain = target_domain.encode('utf-8')
-    encoded_choose_verb = choose_verb.upper().encode('utf-8)
+    encoded_choose_verb = choose_verb.upper().encode('utf-8')
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
