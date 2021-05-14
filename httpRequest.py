@@ -11,7 +11,6 @@ def http_request():
     choose_verb = sys.argv[2]  # Choose HTTP verb to use. Consider using OPTIONS or HEAD.
     port = sys.argv[3]
     res = sys.argv[4]
-    port_integer = int(port)
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
