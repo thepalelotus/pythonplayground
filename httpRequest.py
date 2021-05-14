@@ -15,7 +15,7 @@ def http_request():
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
-        if port_integer == 80:
+        if int(port) == 80:
             try:
                 s.connect((target_domain, 80))
                 try:
@@ -23,7 +23,7 @@ def http_request():
                     s.sendall(request.encode('utf-8'))
                     try:
                         print("[+] Response received...\n")
-                        print("\n", s.recv(2048).decode())
+                        print("\n", s.recv(1000000).decode())
                     except socket.error as e:
                         print("[!] Failed to receive response: %s " % e, "\n")
                 except socket.error as e:
@@ -31,7 +31,7 @@ def http_request():
             except socket.gaierror as e:
                 print("[!] Client could not connect: %s " % e, "\n")
 
-        elif port_integer == 443:
+        elif int(port) == 443:
             print("[!] Establishing an SSL socket.\n")
             wrapper = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
             s_sock = wrapper.wrap_socket(s, server_hostname=target_domain)
@@ -43,7 +43,7 @@ def http_request():
                     s_sock.sendall(request.encode('utf-8'))
                     try:
                         print("[+] Response received...\n")
-                        print("\n", s_sock.recv(2048).decode())
+                        print("\n", s_sock.recv(1000000).decode())
                     except socket.error as e:
                         print("[!] Failed to receive response: %s" % e, "\n")
                 except socket.error as e:
@@ -57,7 +57,3 @@ def main():
     print("\n[+] Preparing to send HTTP request...\n")
     http_request()
     print("\n[*] Finished with request.\n[-] Closed socket.\n")
-
-if __name__ == "__main__":
-    main()
-
