@@ -57,3 +57,6 @@ def main():
     print("\n[+] Preparing to send HTTP request...\n")
     http_request()
     print("\n[*] Finished with request.\n[-] Closed socket.\n")
+
+if __name__ == "__main__":
+    main()
